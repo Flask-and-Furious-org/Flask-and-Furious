@@ -1,43 +1,29 @@
-
 services:
-- type: web
-  name: flask-postgres-api
-  env: python
-  repo: https://github.com/uwidcit/flaskmvc.git
-  plan: free
-  branch: main
-  healthCheckPath: /healthcheck
-  buildCommand: "pip install -r requirements.txt"
-  startCommand: "gunicorn wsgi:app"
-  envVars:
-  - fromGroup: flask-postgres-api-settings
-  - key: POSTGRES_URL
-    fromDatabase:
-      name: flask-postgres-api-db
-      property: host
-  - key: POSTGRES_USER
-    fromDatabase:
-      name: flask-postgres-api-db
-      property: user
-  - key: POSTGRES_PASSWORD
-    fromDatabase:
-      name: flask-postgres-api-db
-      property: password
-  - key: POSTGRES_DB
-    fromDatabase:
-      name: flask-postgres-api-db
-      property: database 
+  - type: web
+    name: ingredient-recipes-app
+    env: python
+    plan: free
+    branch: main
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn wsgi:app"
+    envVars:
+      - fromGroup: ingredient-recipes-settings
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ingredient-recipes-db
+          property: connectionString
 
 envVarGroups:
-- name: flask-postgres-api-settings
-  envVars:
-  - key: ENV
-    value: production
-  - key: FLASK_APP
-    value: wsgi.py
-    
+  - name: ingredient-recipes-settings
+    envVars:
+      - key: ENV
+        value: production
+      - key: FLASK_APP
+        value: wsgi.py
+      - key: SECRET_KEY
+        value: something-secret-and-random
 
 databases:
-- name: flask-postgres-api-db
-  plan: free
-  databaseName: mydb
+  - name: ingredient-recipes-db
+    plan: free
+    databaseName: mydb
