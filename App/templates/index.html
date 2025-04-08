@@ -1,0 +1,26 @@
+<!-- when changing keeping checking for internal server error...
+if you get that error or any page not running errors undo your changes bc
+the templates are sensitive to jinga and flask 
+i took hours to even get it to work so if you break it YOU better fix it (inserts crying emoji) 
+ALSOOOOOOOOO use this block content to add your data changing may result in issues 
+you can try adding blobks within if needed -->
+
+
+{% extends "layout.html" %}
+{% block title %}workout App{% endblock %}
+{% block page %}workout App{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <h1></h1>
+    <ul id="nav-mobile" class="left">
+        <li><a href="/">Home</a></li>
+        <li><a href="/workout">workouts</a></li>
+        <li><a href="/routine">Workout Routines</a></li>
+        <li><a href="/signup">sign up</a></li>
+        <li><a href="/login">login</a></li>
+    </ul>
+{% endblock %}
+
+
