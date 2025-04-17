@@ -26,4 +26,10 @@ def create_app():
     for view in views:
         app.register_blueprint(view)
 
+    from App.controllers.inventory_controller import inventory_views
+    from App.controllers.recipe_controller    import recipe_views
+        app.register_blueprint(inventory_views)
+        app.register_blueprint(recipe_views)
+
+
     return app
