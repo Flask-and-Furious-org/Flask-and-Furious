@@ -30,6 +30,9 @@ def create_app():
     from App.controllers.recipe_controller    import recipe_views
         app.register_blueprint(inventory_views)
         app.register_blueprint(recipe_views)
+    from App.controllers.home_controller import home_views
+        app.register_blueprint(home_views)
+
 
 
     return app
