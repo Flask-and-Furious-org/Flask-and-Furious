@@ -1,0 +1,18 @@
+/*  App/static/css/custom.css  */
+
+/* Brand palette */
+:root {
+  --cream:  #F8EFEA;
+  --yellow: #DED369;
+  --pink:   #E0475B;
+  --green:  #192F01;
+}
+
+/* Global fonts */
+body        { font-family: "Open Sans", sans-serif; }
+h1, h2, h3  { font-family: "Inter", sans-serif; }
+
+/* Component overrides */
+.navbar           { background: var(--green) !important; }
+.btn-success      { background: var(--yellow); color:#000; border:none; }
+.alert-info       { background: var(--yellow); color:#000; border:none; }
