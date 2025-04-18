@@ -3,4 +3,6 @@ db = SQLAlchemy()
 
 from .user import User            
 from .ingredient import Ingredient
-from .recipe import Recipe, recipe_ingredients
+from .recipe import Recipe
+from .user import User
+from .ingredient import Ingredient

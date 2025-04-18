@@ -1,4 +1,4 @@
-from . import db
+from App.database import db
 
 class Ingredient(db.Model):
     __tablename__ = "ingredients"
@@ -7,9 +7,9 @@ class Ingredient(db.Model):
     name        = db.Column(db.String(80), nullable=False, unique=True)
     quantity    = db.Column(db.String(40))
     expiry_date = db.Column(db.Date)
-    owner_id    = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    owner_id    = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)  # Fix: Changed "users" to "user"
 
-    owner = db.relationship("User", back_populates="ingredients")
+    owner = db.relationship("User", back_populates="ingredients")  # Ensure this matches the relationship in the User model
 
     def to_dict(self):
         return {
