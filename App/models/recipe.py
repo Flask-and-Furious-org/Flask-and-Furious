@@ -1,5 +1,5 @@
-# App/models/recipe.py
-from . import db
+# File: App/models/recipe.py
+from App.database import db
 
 recipe_ingredients = db.Table(
     "recipe_ingredients",
@@ -13,7 +13,7 @@ class Recipe(db.Model):
     id          = db.Column(db.Integer, primary_key=True)
     title       = db.Column(db.String(120), nullable=False)
     directions  = db.Column(db.Text,        nullable=False)
-    owner_id    = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    owner_id    = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)  # Fix: Changed "users" to "user"
 
     owner       = db.relationship("User", back_populates="recipes")
     ingredients = db.relationship("Ingredient",
