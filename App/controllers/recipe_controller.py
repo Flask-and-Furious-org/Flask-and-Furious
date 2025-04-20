@@ -10,7 +10,7 @@ recipe_views = Blueprint("recipe_views", __name__, template_folder="../templates
 def recipes():
     return render_template("recipes.html", recipes=current_user.recipes)
 
-@recipe_views.route("/recipes/new", methods=["GET", "POST"])
+@recipe_views.route("/recipes", methods=["GET", "POST"])
 @login_required
 def new_recipe():
     if request.method == "GET":
